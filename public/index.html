@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Middleware Detective 🔍</title>
+  </head>
+  <body>
+    <h1>🔍 Middleware Detective</h1>
+    <p>Osserva il percorso della richiesta HTTP attraverso i middleware</p>
+
+    <form id="messageForm">
+      <input
+        type="text"
+        id="messageInput"
+        placeholder="Scrivi un messaggio..."
+        required
+      />
+      <button type="submit">Invia</button>
+    </form>
+
+    <div id="pipeline">
+      <!-- Visualizza i middleware e le frecce -->
+
+      <div class="stage" id="logger">Logger</div>
+      <div class="arrow" id="arrow1">➡️</div>
+      <div class="stage" id="timer">Timer</div>
+      <div class="arrow" id="arrow2">➡️</div>
+      <div class="stage" id="uppercase">Uppercase</div>
+      <div class="arrow" id="arrow3">➡️</div>
+      <div class="stage" id="controller">Controller</div>
+      <div class="arrow" id="arrow4">➡️</div>
+      <div class="stage" id="response">Risposta</div>
+    </div>
+
+    <div id="output">🟢 In attesa di messaggio...</div>
+
+    <div id="serverConsole">
+      <h3>📟 Console Middleware</h3>
+      <div id="consoleContent"></div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
+
+<!-- Form per inviare messaggi.
+Pipeline visuale dei middleware (logger → timer → uppercase → controller → risposta).
+#output mostra il risultato.
+#serverConsole simula una console del server in frontend.-->
