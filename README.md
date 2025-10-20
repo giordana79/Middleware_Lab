@@ -19,6 +19,8 @@ Questo file contiene tutte le informazioni del progetto:
 
   Poi aprire http://localhost:3000 nel browser.
 
+  ***
+
 **Punti chiave del corretto flusso**
 
 1. Logger: stampa data, metodo e route

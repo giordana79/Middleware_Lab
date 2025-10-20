@@ -1,3 +1,4 @@
+/* Stile base e layout pagina */
 body {
   font-family: "Segoe UI", sans-serif;
   background: #f4f6f9;
@@ -12,7 +13,6 @@ h1 {
   color: #333;
   margin-bottom: 5px;
 }
-
 p {
   margin-top: 0;
   color: #555;
@@ -42,21 +42,18 @@ button {
   font-size: 16px;
   transition: 0.2s;
 }
-
 button:hover {
   background-color: #0056b3;
 }
 
+/* Pipeline middleware */
 #pipeline {
   display: flex;
   margin-top: 40px;
   gap: 10px;
   justify-content: center;
-  align-items: center;
   flex-wrap: wrap;
-  position: relative;
 }
-
 .stage {
   background: white;
   padding: 15px;
@@ -68,27 +65,25 @@ button:hover {
   position: relative;
   z-index: 2;
 }
-
 .stage.active {
   background: #007bff;
   color: white;
   transform: scale(1.1);
   box-shadow: 0 5px 12px rgba(0, 123, 255, 0.4);
 }
-
 .arrow {
   font-size: 24px;
   color: #007bff;
   opacity: 0.6;
   transition: 0.3s;
 }
-
 .arrow.active {
   opacity: 1;
   color: #0056b3;
   transform: scale(1.3);
 }
 
+/* Output finale e console simulata */
 #output {
   margin-top: 40px;
   background: white;
@@ -111,15 +106,13 @@ button:hover {
   font-family: monospace;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
 }
-
 #serverConsole h3 {
   margin-top: 0;
   margin-bottom: 10px;
   font-weight: normal;
   font-size: 18px;
-  color: #ffffff;
+  color: #fff;
 }
-
 #consoleContent div {
   margin-bottom: 3px;
   font-size: 14px;

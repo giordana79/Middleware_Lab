@@ -10,6 +10,7 @@
     <h1>🔍 Middleware Detective</h1>
     <p>Osserva il percorso della richiesta HTTP attraverso i middleware</p>
 
+    <!-- Form per inviare messaggio -->
     <form id="messageForm">
       <input
         type="text"
@@ -20,9 +21,8 @@
       <button type="submit">Invia</button>
     </form>
 
+    <!-- Pipeline visuale dei middleware -->
     <div id="pipeline">
-      <!-- Visualizza i middleware e le frecce -->
-
       <div class="stage" id="logger">Logger</div>
       <div class="arrow" id="arrow1">➡️</div>
       <div class="stage" id="timer">Timer</div>
@@ -34,8 +34,10 @@
       <div class="stage" id="response">Risposta</div>
     </div>
 
+    <!-- Output finale -->
     <div id="output">🟢 In attesa di messaggio...</div>
 
+    <!-- Simulazione console server -->
     <div id="serverConsole">
       <h3>📟 Console Middleware</h3>
       <div id="consoleContent"></div>
@@ -44,8 +46,3 @@
     <script src="script.js"></script>
   </body>
 </html>
-
-<!-- Form per inviare messaggi.
-Pipeline visuale dei middleware (logger → timer → uppercase → controller → risposta).
-#output mostra il risultato.
-#serverConsole simula una console del server in frontend.-->

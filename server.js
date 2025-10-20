@@ -1,49 +1,50 @@
-//Import dei middleware
-//Configura Express per JSON e file statici
-const express = require("express");
-const app = express();
+// Server Express completo con pipeline di middleware
+
+const express = require("express"); // Importa Express
+const app = express(); // Crea un'istanza di Express
+
+// Import dei middleware
 const logger = require("./middleware/logger");
 const timer = require("./middleware/timer");
 const uppercase = require("./middleware/uppercase");
 const errorHandler = require("./middleware/errorHandler");
 
-app.use(express.json()); // per leggere JSON dal body
-app.use(express.static("public")); // per servire frontend
+// Middleware per leggere JSON nel body
+app.use(express.json());
 
-// Usa i middleware globali tutte le richieste passano da logger → timer
-app.use(logger);
-app.use(timer);
+// Middleware per servire file statici (frontend)
+app.use(express.static("public"));
 
-// Rotta POST /process
-//Usa uppercase prima della funzione controller
-//Controller:
-//Prende originalMessage e transformedMessage
-//Se contiene la parola "errore", genera Error e passa ad errorHandler
-//Altrimenti, invia risposta JSON con messaggi e info
+// Middleware globali (tutte le richieste passeranno da questi)
+app.use(logger); // Logger
+app.use(timer); // Timer
+
+// Rotta POST per processare i messaggi
 app.post("/process", uppercase, (req, res, next) => {
   try {
-    const originalMessage = req.body.originalMessage || "";
-    const transformedMessage = req.body.transformedMessage || originalMessage;
+    const originalMessage = req.body.originalMessage || ""; // Messaggio originale
+    const transformedMessage = req.body.transformedMessage || originalMessage; // Messaggio maiuscolo
 
+    // Controllo "parola vietata"
     if (originalMessage.toLowerCase().includes("errore")) {
       return next(new Error('Hai scritto una parola non consentita: "errore"'));
     }
 
-    // Risposta JSON al client
+    // Risposta JSON
     res.json({
-      original: originalMessage,
-      transformed: transformedMessage,
-      info: "Elaborazione completata attraverso logger → timer → uppercase → controller",
+      original: originalMessage, // Messaggio originale
+      transformed: transformedMessage, // Messaggio trasformato
+      info: "Elaborazione completata attraverso logger → timer → uppercase → controller", // Info
     });
   } catch (err) {
-    next(err); // passa l'errore a errorHandler
+    next(err); // Passa l'errore a errorHandler
   }
 });
 
-//Middleware per errori e deve essere messo dopo tutte le rotte
+// Middleware per gestire errori (deve essere dopo tutte le rotte)
 app.use(errorHandler);
 
-// Avvio server sulla porta 3000
+// Avvio del server sulla porta 3000
 app.listen(3000, () =>
   console.log("🚀 Server attivo su http://localhost:3000")
 );

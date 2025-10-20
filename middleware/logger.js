@@ -1,13 +1,8 @@
 // Registra metodo e URL di ogni richiesta
 function logger(req, res, next) {
-  const now = new Date().toISOString();
-  console.log(`[Logger] ${now} - ${req.method} ${req.originalUrl}`);
-  next();
+  const now = new Date().toISOString(); // Ottieni data e ora corrente in formato ISO
+  console.log(`[Logger] ${now} - ${req.method} ${req.originalUrl}`); // Logga il metodo e percorso
+  next(); // Passa al middleware successivo
 }
 
-module.exports = logger;
-
-//Middleware globale per loggare tutte le richieste
-//req.method = GET/POST ecc
-//req.originalUrl = percorso della richiesta
-//Chiama next() per passare al middleware successivo
+module.exports = logger; // Esporta il middleware

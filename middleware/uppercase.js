@@ -1,17 +1,15 @@
-// Trasforma il testo ricevuto in maiuscolo prima della risposta
+// Middleware che trasforma il messaggio ricevuto in maiuscolo
+
 function uppercase(req, res, next) {
   if (req.body && typeof req.body.message === "string") {
-    req.body.transformedMessage = req.body.message.toUpperCase();
+    // Se esiste req.body.message ed è una stringa
+    req.body.transformedMessage = req.body.message.toUpperCase(); // Trasforma in maiuscolo
     console.log(`[Uppercase] Messaggio trasformato in maiuscolo`);
   } else {
-    req.body.transformedMessage = "";
+    // Se non esiste o non è stringa
+    req.body.transformedMessage = ""; // Imposta stringa vuota
   }
-  next();
+  next(); // Passa al middleware successivo
 }
 
-module.exports = uppercase;
-
-//Controlla se req.body.message è una stringa.
-//Se sì, crea req.body.transformedMessage in MAIUSCOLO.
-//Se no, inizializza transformedMessage a "".
-//Chiama next() per continuare il flusso.
+module.exports = uppercase; // Esporta il middleware
